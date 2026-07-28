@@ -17,3 +17,17 @@ This issue is a good fit because it is Tier 1, has a focused scope, and affects 
 **Setup confirmation:** [x] App runs locally at localhost:5173
 
 **Cohort ledger:** [ ] Issue added to cohort ledger
+
+## Week 8 — Reproduction & solution planning
+
+**Reproduction commit link:** https://github.com/PrishaTHE-PRO/pathreview/commit/9b883cef99bd1eae6b8cb9be8eb4fefa67472df9
+
+**Reproduction summary:**
+I reproduced issue 147 with a focused resume parser regression test using indented `Education:` and `Skills:` headings. The affected behavior lives in `ResumeParser._detect_sections()`, where section headings need to be detected even when PDF or Markdown extraction preserves leading whitespace.
+
+**PLAN.md link:** https://github.com/PrishaTHE-PRO/pathreview/blob/fix/147-resume-section-leading-whitespace/PLAN.md
+
+**Walkthrough video (recommended):** Not recorded.
+
+**Blockers or open questions:**
+None right now. The main follow-up risk is ensuring the section detection regex stays anchored to heading-like lines so it does not over-detect normal body text.
