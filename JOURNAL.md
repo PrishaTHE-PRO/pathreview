@@ -31,3 +31,34 @@ I reproduced issue 147 with a focused resume parser regression test using indent
 
 **Blockers or open questions:**
 None right now. The main follow-up risk is ensuring the section detection regex stays anchored to heading-like lines so it does not over-detect normal body text.
+
+## Week 9 — Solution building & PR submission
+
+### Check-in 1 (mid-week)
+
+**Current progress:**
+Implemented the issue 147 parser fix and added a focused regression test for indented resume section headings. The planned parser and test sub-tasks from `PLAN.md` are complete.
+
+**Next steps:**
+Open the pull request, request peer or mentor feedback, and confirm the final validation status before marking the PR ready for review.
+
+**Blockers:**
+Repo-wide `make check` and `make test-unit` currently fail in unrelated modules, so the PR description should document those pre-existing failures and note that the focused resume parser tests pass.
+
+---
+
+### Check-in 2 (end of week)
+
+**PR link:** TODO: add submitted PR link
+
+**Branch:** `fix/147-resume-section-leading-whitespace`
+
+**What you built:**
+Updated resume section detection so headings with leading whitespace, such as indented `Education:` and `Skills:` lines from PDF extraction, are detected the same way as non-indented headings. The regex remains anchored to line starts so normal body sentences are not treated as section headers.
+
+**Tests added or updated:**
+Updated `tests/unit/test_resume_parser.py` with `test_detect_sections_with_leading_whitespace`, which covers indented `Education:` and `Skills:` headings.
+
+**Self-review confirmation:** [ ] make check passes  [ ] make test-unit passes
+
+**Draft PR feedback received from:** none
