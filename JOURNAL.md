@@ -49,7 +49,7 @@ Repo-wide `make check` and `make test-unit` currently fail in unrelated modules,
 
 ### Check-in 2 (end of week)
 
-**PR link:** TODO: add submitted PR link
+**PR link:** https://github.com/ascherj/pathreview/pull/812
 
 **Branch:** `fix/147-resume-section-leading-whitespace`
 
