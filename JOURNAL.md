@@ -62,3 +62,33 @@ Updated `tests/unit/test_resume_parser.py` with `test_detect_sections_with_leadi
 **Self-review confirmation:** [ ] make check passes  [ ] make test-unit passes
 
 **Draft PR feedback received from:** none
+
+## Week 10 — Iteration & reflection
+
+### Reviewer feedback
+
+**Feedback received:** [ ] Yes  [x] No — still awaiting review
+
+**Summary of feedback:**
+No reviewer or maintainer feedback has come in on PR #812 yet. I checked the PR conversation and inline review threads, and there were no comments to respond to.
+
+**How you responded:**
+
+---
+
+### Reflection
+
+**What was harder than you expected?**
+The hardest part was keeping the fix small while still being confident it handled the real problem. The code change for issue 147 was only a regex adjustment, but it was easy to make the pattern too broad and accidentally detect words like "skills" inside normal resume body text. I had to think carefully about anchoring the match to heading-like lines and only adding optional leading whitespace where PDF extraction would realistically introduce it.
+
+**What did you learn about working in a large codebase?**
+I learned that even a small bug fix needs to fit the codebase's existing behavior and tests. In my own projects, I might rewrite a parser more freely, but here the better contribution was to preserve the existing `ResumeParser._detect_sections()` structure and add a focused regression test. I also learned to separate my change from unrelated repo-wide test failures so reviewers can see what my PR actually validates.
+
+**How did AI tools help — and where did they fall short?**
+AI tools helped most with navigating the repository, identifying the affected parser and test file, and turning the issue description into a concrete reproduction plan. They were also useful for checking whether the test covered the exact leading-whitespace case. Where AI fell short was judgment: I still had to verify the regex behavior myself, decide what not to change, and make sure the PR notes were honest about the broader test suite failures.
+
+**What would you do differently if you started over?**
+I would check the full test suite status earlier, before implementing the fix, so I could document pre-existing failures sooner instead of discovering them near PR submission. I would also write the reproduction test first and keep it as a separate checkpoint, because that made the issue much clearer than only reading the parser code.
+
+**What are you most proud of from this module?**
+I am most proud that the final PR is narrow and reviewable. It fixes a realistic parsing edge case, includes a regression test for the exact bug, and avoids changing unrelated parser behavior just to make the solution look larger.
